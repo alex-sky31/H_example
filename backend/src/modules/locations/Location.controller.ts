@@ -1,34 +1,52 @@
-import { Controller, Get, Param, ParseIntPipe, Patch, Post, Req, Res } from '@nestjs/common';
-import { Request, Response } from 'express'
+import {
+  Body,
+  Controller,
+  Delete,
+  Get,
+  Param,
+  ParseIntPipe,
+  Patch,
+  Post,
+  Query,
+  Req,
+  Res,
+} from '@nestjs/common';
+import { Request, Response } from 'express';
 import { LocationService } from './Location.service';
+import { LocationDto } from './Location.dto';
 
 @Controller('locations')
 export class LocationController {
   constructor(private readonly locationService: LocationService) {}
 
   /** List all locations in database with this endpoint */
-  @Get()
+  @Get('/all')
   async getLocations() {
-    return await this.locationService.getLocations();
+    return this.locationService.getLocations();
+  }
+  @Get('/:id')
+  async getLocationById(@Param('id', ParseIntPipe) id: number) {
+    return this.locationService.getLocationById(id);
   }
 
-  @Post('Delete/:id')
-  async DeleteLocationId(@Param('id', ParseIntPipe) id: number, @Req() req: Request, @Res() res: Response){
-    console.log(id)
-    await this.locationService.DeleteLocation(id)
-    res.send(200)
+  @Delete('/:id')
+  async deleteLocationId(@Param('id', ParseIntPipe) id: number) {
+    return this.locationService.deleteLocation(id);
   }
 
-  @Post('Update/')
-  async UpdatePriceId( @Req() req: Request, @Res() res: Response){
-    console.log(req.body)
-   await this.locationService.patchPrice(req.body.id, req.body.price)
-   res.send(200)
+  @Patch('/:id')
+  async updateLocation(
+    @Param('id', ParseIntPipe) id: number,
+    @Body() dto: LocationDto,
+  ) {
+    console.log(id);
+    console.log(dto);
+    return this.locationService.updateLocation(id, dto);
   }
   @Post('Add/')
-  async AddLocation(@Req() req: Request, @Res() res: Response){
-  console.log(req.body)
-  await this.locationService.CreateLocation(req.body)
-   res.send(200)
+  async AddLocation(@Req() req: Request, @Res() res: Response) {
+    console.log(req.body);
+    await this.locationService.CreateLocation(req.body);
+    res.send(200);
   }
 }

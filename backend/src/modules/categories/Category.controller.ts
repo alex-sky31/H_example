@@ -8,6 +8,6 @@ export class CategoryController {
   /** List all categories in database with this endpoint */
   @Get()
   async getCategorys() {
-    return await this.categoryService.getCategorys();
+    return this.categoryService.getCategorys();
   }
 }
