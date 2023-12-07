@@ -12,9 +12,10 @@ type DisplayLocationPageProps = {};
 const DisplayLocationPage: React.FC<DisplayLocationPageProps> = () => {
   const currentLocation = useRecoilValue(currentLocationStore);
   const [location, setLocation] = useState<Location>();
+  const [price, setPrice] = useState<number>();
+
   const navigate = useNavigate();
   const { id } = useParams<{ id: string }>();
-  const [price, setPrice] = useState<number>();
 
   useEffect(() => {
     const fetchData = async () => {
@@ -35,13 +36,21 @@ const DisplayLocationPage: React.FC<DisplayLocationPageProps> = () => {
 
   const updateLocation = async (location: Location, updatedPrice: number) => {
     const updatedLocation = { ...location, price: updatedPrice };
-    const data = await locationService.updateLocation(updatedLocation);
-    setLocation(data.data);
+    try {
+      const data = await locationService.updateLocation(updatedLocation);
+      setLocation(data.data);
+    } catch (e) {
+      console.error(e);
+    }
   };
 
   const deleteLocation = async (locationId: number) => {
-    await locationService.deleteLocation(locationId);
-    navigate('/');
+    try {
+      await locationService.deleteLocation(locationId);
+      navigate('/');
+    } catch (e) {
+      console.error(e);
+    }
   };
 
   return (

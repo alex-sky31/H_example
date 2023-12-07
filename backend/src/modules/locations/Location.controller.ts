@@ -6,12 +6,7 @@ import {
   Param,
   ParseIntPipe,
   Patch,
-  Post,
-  Query,
-  Req,
-  Res,
 } from '@nestjs/common';
-import { Request, Response } from 'express';
 import { LocationService } from './Location.service';
 import { LocationDto } from './Location.dto';
 
@@ -43,10 +38,10 @@ export class LocationController {
     console.log(dto);
     return this.locationService.updateLocation(id, dto);
   }
-  @Post('Add/')
-  async AddLocation(@Req() req: Request, @Res() res: Response) {
+  /* @Post('/')
+  async createLocation(@Req() req: Request, @Res() res: Response) {
     console.log(req.body);
     await this.locationService.CreateLocation(req.body);
     res.send(200);
-  }
+  }*/
 }
