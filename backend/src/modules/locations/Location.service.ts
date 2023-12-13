@@ -24,17 +24,16 @@ export class LocationService {
   async deleteLocation(id: number) {
     return await this.locationRepository.delete(id);
   }
-  async CreateLocation(data: any) {
-    console.log(data);
+  async createLocation(dto: LocationDto) {
     const list = this.locationRepository.create({
-      title: data.title,
-      description: data.description,
-      location: data.location,
-      picture: data.picture,
-      stars: data.stars,
-      numberOfRooms: data.numberOfRooms,
-      price: data.price,
-      categoryId: data.categoryId,
+      title: dto.title,
+      description: dto.description,
+      location: dto.location,
+      picture: dto.picture,
+      stars: dto.stars,
+      numberOfRooms: dto.numberOfRooms,
+      price: dto.price,
+      categoryId: dto.categoryId,
     });
     return await this.locationRepository.save(list);
   }

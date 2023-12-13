@@ -6,6 +6,7 @@ import {
   Param,
   ParseIntPipe,
   Patch,
+  Post,
 } from '@nestjs/common';
 import { LocationService } from './Location.service';
 import { LocationDto } from './Location.dto';
@@ -34,14 +35,10 @@ export class LocationController {
     @Param('id', ParseIntPipe) id: number,
     @Body() dto: LocationDto,
   ) {
-    console.log(id);
-    console.log(dto);
     return this.locationService.updateLocation(id, dto);
   }
-  /* @Post('/')
-  async createLocation(@Req() req: Request, @Res() res: Response) {
-    console.log(req.body);
-    await this.locationService.CreateLocation(req.body);
-    res.send(200);
-  }*/
+  @Post('/')
+  async createLocation(@Body() dto: LocationDto) {
+    return this.locationService.createLocation(dto);
+  }
 }

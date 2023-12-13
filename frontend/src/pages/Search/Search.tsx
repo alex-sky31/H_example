@@ -6,12 +6,15 @@ import { Location } from '../../API/locations/Location.entity';
 import { Category } from '../../API/categories/Category.entity';
 
 import Card from '../../components/Card/Card';
+import Popup from '../../components/Modal/Modal';
 
 type SearchPageProps = {};
 
 const SearchPage: React.FC<SearchPageProps> = () => {
   const [location, setLocation] = useState<Location[]>();
   const [categories, setCategories] = useState<Category[]>([]);
+  const [selectedCategory, setSelectedCategory] = useState<number>();
+  const [isPopupOpen, setPopupOpen] = useState(false);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -25,7 +28,11 @@ const SearchPage: React.FC<SearchPageProps> = () => {
       }
     };
     fetchData();
-  }, []);
+  }, [isPopupOpen]);
+
+  const handleClosePopup = () => {
+    setPopupOpen(false);
+  };
 
   const sortableCategoriesAndLocations = (
     dataCategories: Category[],
@@ -50,11 +57,24 @@ const SearchPage: React.FC<SearchPageProps> = () => {
         sortableCategoriesAndLocations(categories, location).map((category: any) => (
           <div className="container" key={category.category.id}>
             <div className="Categories">{category.category.name}</div>
+            <button
+              className="open-button"
+              onClick={() => {
+                setPopupOpen(true);
+                setSelectedCategory(category.category.id);
+              }}>
+              Add new location
+            </button>
             <div className="CardContainer">
               {category.lc.map((location: Location) => (
                 <Card data={location} key={location.id}></Card>
               ))}
             </div>
+            <Popup
+              isOpen={isPopupOpen}
+              onClose={handleClosePopup}
+              categoryId={selectedCategory ?? 0}
+            />
           </div>
         ))}
     </div>

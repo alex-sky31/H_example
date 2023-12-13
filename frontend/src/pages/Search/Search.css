@@ -20,6 +20,15 @@
 
 }
 
+.open-button {
+  background: #04ddbf;
+  color: #fff;
+  border: none;
+  padding: 8px 16px;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
 .CardContainer {
   display: flex;
   flex-direction: row;
