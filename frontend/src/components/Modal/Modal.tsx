@@ -52,32 +52,32 @@ const Popup: React.FC<PopupProps> = ({ isOpen, onClose, categoryId }) => {
               }}
               validationSchema={validationSchema}
               onSubmit={submit}>
-              {({ errors }) => (
+              {({ errors, touched }) => (
                 <Form className="form-content">
                   <label htmlFor="title">Title</label>
                   <Field id="title" name="title" placeholder="Jane" />
-                  <span className="error">{errors.title}</span>
-
+                  {touched.title && errors.title && <span className="error">{errors.title}</span>}
                   <label htmlFor="description">description</label>
                   <Field id="description" name="description" placeholder="Doe" />
-                  <span className="error">{errors.description}</span>
-
+                  {touched.description && errors.description && (
+                    <span className="error">{errors.description}</span>
+                  )}
                   <label htmlFor="price">price</label>
                   <Field id="price" name="price" placeholder="Doe" type="number" />
-                  <span className="error">{errors.price}</span>
-
+                  {touched.price && errors.price && <span className="error">{errors.price}</span>}
                   <label htmlFor="price">stars</label>
                   <Field id="stars" name="stars" placeholder="0" type="number" />
-                  <span className="error">{errors.stars}</span>
-
+                  {touched.stars && errors.stars && <span className="error">{errors.stars}</span>}
                   <label htmlFor="numberOfRooms">numberOfRooms</label>
                   <Field id="numberOfRooms" name="numberOfRooms" placeholder="Doe" type="number" />
-                  <span className="error">{errors.numberOfRooms}</span>
-
+                  {touched.numberOfRooms && errors.numberOfRooms && (
+                    <span className="error">{errors.numberOfRooms}</span>
+                  )}
                   <label htmlFor="location">Location</label>
                   <Field id="location" name="location" placeholder="do" />
-                  <span className="error">{errors.location}</span>
-
+                  {touched.location && errors.location && (
+                    <span className="error">{errors.location}</span>
+                  )}
                   <div className="form-footer">
                     <button className="submit-button" type="submit">
                       Submit
