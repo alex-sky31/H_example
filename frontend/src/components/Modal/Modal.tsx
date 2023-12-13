@@ -79,11 +79,11 @@ const Popup: React.FC<PopupProps> = ({ isOpen, onClose, categoryId }) => {
                     <span className="error">{errors.location}</span>
                   )}
                   <div className="form-footer">
-                    <button className="submit-button" type="submit">
-                      Submit
-                    </button>
                     <button className="close-button" onClick={onClose}>
                       Close
+                    </button>
+                    <button className="submit-button" type="submit">
+                      Submit
                     </button>
                   </div>
                 </Form>
