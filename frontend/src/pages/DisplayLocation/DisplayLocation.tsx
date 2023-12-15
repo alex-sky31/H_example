@@ -23,7 +23,7 @@ const DisplayLocationPage: React.FC<DisplayLocationPageProps> = () => {
         const dataLocation = await locationService.getLocationById(id || '');
         setLocation(dataLocation.data);
       } catch (error) {
-        console.error('Error fetching data:', error);
+        console.error('Error fetching data', error);
       }
     };
 
