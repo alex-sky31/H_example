@@ -37,8 +37,8 @@ const DisplayLocationPage: React.FC<DisplayLocationPageProps> = () => {
   const updateLocation = async (location: Location, updatedPrice: number) => {
     const updatedLocation = { ...location, price: updatedPrice };
     try {
-      const data = await locationService.updateLocation(updatedLocation);
-      setLocation(data.data);
+      const res = await locationService.updateLocation(updatedLocation);
+      setLocation(res.data);
     } catch (e) {
       console.error(e);
     }
