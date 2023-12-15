@@ -1,21 +1,17 @@
 .card {
-    background: #fff;
+    background: #ffffff;
     border-radius: 16px;
     display: flex;
     flex-direction: column;
     height: 364px;
     width: 348px;
-
-}
-
-
-.card:hover {
     border: 1px solid rgba(0, 0, 0, 0.15);
+
+
 }
 
 
-
-.CardImage2 {
+.card__image__2 {
     margin: 10px;
     width: 324px;
     height: 196px;
@@ -48,7 +44,7 @@
   }
   
 
-  .Like{
+  .like{
     height: 90%;
   font-family: 'DM Sans';
   font-style: normal;
@@ -63,7 +59,7 @@
   color: #747475;
   }
   
-  .Like1{
+  .like__1{
     height: 20%;
   font-family: 'DM Sans';
   font-style: normal;

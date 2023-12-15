@@ -16,18 +16,17 @@ const Card = (props: CardProps) => {
     <div
       className="card"
       onClick={() => {
-        console.log(location, 'location');
         setCurrentLocation(props.data);
         navigate(`/display/${props.data.id}`);
       }}>
       <div>
-        <img className="CardImage2" src={props.data.picture}></img>
+        <img className="card__image__2" src={props.data.picture} alt={props.data.title}></img>
       </div>
       <div className="Data">
         <div className="TrendTop">{props.data.title}</div>
         <div className="D2P"> {props.data.location}</div>
-        <div className="Like">€ {props.data.price} night</div>
-        <div className="Like1">{props.data.numberOfRooms} Roome</div>
+        <div className="like">€ {props.data.price}night</div>
+        <div className="like__1">{props.data.numberOfRooms}Room</div>
       </div>
     </div>
   );

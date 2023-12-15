@@ -56,20 +56,20 @@ const DisplayLocationPage: React.FC<DisplayLocationPageProps> = () => {
   return (
     <div>
       {location && (
-        <div className="Container">
+        <div className="container">
           <div>
             <img className="display" src={location?.picture} alt="Location"></img>
           </div>
-          <div className="display-location">
-            <div className="display-location__content">
-              <p className="Like4">{location?.title}</p>
-              <p className="Like2">{location?.description}</p>
-              <p className="Like1">Number of Rooms: {location?.numberOfRooms}</p>
+          <div className="display__location">
+            <div className="display__location__content">
+              <p className="like__4">{location?.title}</p>
+              <p className="like__2">{location?.description}</p>
+              <p className="like__1">Number of Rooms: {location?.numberOfRooms}</p>
             </div>
-            <div className="display-location__edit">
-              <div className="Like3">€ {location?.price} per night</div>
+            <div className="display__location__edit">
+              <div className="like__3">€ {location?.price} per night</div>
               <div className="cards">
-                <div className="ContainerCard">
+                <div className="container__card">
                   <div className="titre">Modify price</div>
                   <div className="pr">
                     <input

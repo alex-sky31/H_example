@@ -57,7 +57,7 @@ const SearchPage: React.FC<SearchPageProps> = () => {
         sortableCategoriesAndLocations(categories, location).map((category: any) => (
           <div className="container" key={category.category.id}>
             <div className="category-header">
-              <div className="Categories">{category.category.name}</div>
+              <div className="categories">{category.category.name}</div>
               <button
                 className="open-button"
                 onClick={() => {
@@ -68,9 +68,9 @@ const SearchPage: React.FC<SearchPageProps> = () => {
               </button>
             </div>
 
-            <div className="CardContainer">
+            <div className="card__container">
               {category.lc.map((location: Location) => (
-                <Card data={location} key={location.id}></Card>
+                <Card data={location} key={location.id} />
               ))}
             </div>
             <Popup
